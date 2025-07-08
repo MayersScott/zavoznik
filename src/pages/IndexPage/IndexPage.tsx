@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { Section, Cell, Image, List, Button } from '@telegram-apps/telegram-ui';
-import type { FC } from 'react';
 import { Page } from '@/components/Page.tsx';
 
 declare global {
@@ -17,18 +16,21 @@ declare global {
 }
 
 export const IndexPage: FC = () => {
-  const [gifts, setGifts] = useState<Array<any>>([]);
+  const [gifts, setGifts] = useState<any[]>([]);
   
   useEffect(() => {
     async function loadGifts() {
-      const res = await window.client.invoke({ '@type': 'payments.getStarGifts', hash: 0 });
+      const res = await window.client.invoke({
+        '@type': 'payments.getStarGifts',
+        hash: 0
+      });
       setGifts(res.gifts);
     }
     loadGifts();
 
     window.Telegram.WebApp.onEvent('invoice_closed', ({ status }) => {
       if (status === 'paid') {
-        alert('Спасибо! Подарок отправлен 🎉');
+        alert('Спасибо! 🎉');
       }
     });
   }, []);
@@ -60,10 +62,7 @@ export const IndexPage: FC = () => {
               before={<Image src={g.sticker.thumbs[0].url} />}
               subtitle={`${g.stars} Stars${g.sold_out ? ' • (распродано)' : ''}`}
               after={
-                <Button
-                  disabled={g.sold_out}
-                  onClick={() => buyGift(g.id)}
-                >
+                <Button disabled={g.sold_out} onClick={() => buyGift(g.id)}>
                   Купить
                 </Button>
               }
