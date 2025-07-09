@@ -1,4 +1,4 @@
-import { Section, Cell, Image, List} from '@telegram-apps/telegram-ui';
+import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
 
 import { Link } from '@/components/Link/Link.tsx';
@@ -11,7 +11,7 @@ export const IndexPage: FC = () => {
     <Page back={false}>
       <List>
         <Section
-          header="Featuress"
+          header="Features"
           footer="You can use these pages to learn more about features, provided by Telegram Mini Apps and other useful projects"
         >
           <Link to="/ton-connect">
