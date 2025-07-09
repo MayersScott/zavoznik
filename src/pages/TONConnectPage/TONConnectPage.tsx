@@ -1,8 +1,7 @@
-import { InvokeCustomMethodError, openLink } from '@telegram-apps/sdk-react';
+import { openLink } from '@telegram-apps/sdk-react';
 import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
 import {
   Avatar,
-  Button,
   Cell,
   List,
   Navigation,
@@ -12,8 +11,6 @@ import {
   Title,
 } from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
-
-import { invoice } from '@telegram-apps/sdk';
 
 import { DisplayData } from '@/components/DisplayData/DisplayData.tsx';
 import { Page } from '@/components/Page.tsx';
